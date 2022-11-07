@@ -1,21 +1,14 @@
-name: K6 CI
-
-on:
-  push:
-    branches: [ "rest" ]
-  pull_request:
-    branches: [ "rest" ]
-
+name: Main Workflow
+on: [push]
 jobs:
   build:
-
-    name: k6 Load Test
+    name: Run k6 test
     runs-on: ubuntu-latest
-
     steps:
-    - name: Checkout
-      uses: actions/checkout@v1
-    - name: Run local k6 test
-      uses: grafana/k6-action@v0.2.0
-      with:
-        filename: /tests/signup.js
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Run k6 local test
+        uses: grafana/k6-action@v0.2.0
+        with:
+          filename: tests/signup.js
+          flags: --vus 50 --duration 10s
