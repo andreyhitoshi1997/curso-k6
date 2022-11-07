@@ -6,9 +6,16 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v2
-      - name: Start server
-        uses: cd api/ && yarn dev
+      - uses: actions/checkout@v2
+      - uses: borales/act  ions-yarn@v3.0.0
+        with:
+          cmd: install # will run `yarn install` command
+      - uses: borales/actions-yarn@v3.0.0
+        with:
+          cmd: build # will run `yarn build` command
+      - uses: borales/actions-yarn@v3.0.0
+        with:
+          cmd: dev # will run `yarn test` command  
       - name: Run k6 local test
         uses: grafana/k6-action@v0.2.0
         with:
