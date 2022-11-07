@@ -7,6 +7,8 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v2
+      - name: Start server
+        uses: cd api/ && yarn dev
       - name: Run k6 local test
         uses: grafana/k6-action@v0.2.0
         with:
