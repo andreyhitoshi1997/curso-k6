@@ -8,5 +8,4 @@ jobs:
       - name: Run k6 local test
         uses: grafana/k6-action@v0.2.0
         with:
-          filename: tests/signup.js
-          flags: --vus 50 --duration 10s
+          filename: tests/pokemon-load.js
