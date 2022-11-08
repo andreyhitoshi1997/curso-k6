@@ -13,7 +13,7 @@ jobs:
         uses: grafana/k6-action@v0.2.0
         with:
           filename: tests/pokemon-load.js
-          flags: --out json=../results/result.json
+          flags: --out json=results/result.json
 
       - name: Upload performance test results
         uses: actions/upload-artifact@v3
